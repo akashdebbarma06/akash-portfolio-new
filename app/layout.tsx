@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
+import MotionRoot from "../components/MotionRoot";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,7 +34,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${ibm.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-paper text-ink font-sans">{children}</body>
+      <body className="min-h-full flex flex-col bg-paper text-ink font-sans">
+        <MotionRoot>
+          {children}
+        </MotionRoot>
+      </body>
     </html>
   );
 }

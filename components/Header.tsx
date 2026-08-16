@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import { useScroll, useMotionValueEvent } from 'framer-motion';
 import { scrollToSection } from '../lib/utils';
 
 const tabs = [
@@ -13,8 +14,18 @@ const tabs = [
 export default function Header() {
   const [active, setActive] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 50 && !scrolled) {
+      setScrolled(true);
+    } else if (latest <= 50 && scrolled) {
+      setScrolled(false);
+    }
+  });
 
   useEffect(() => {
     const onHash = () => {
@@ -90,7 +101,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-30 bg-paper-dim border-b border-line">
+    <header className={`sticky top-0 z-30 border-b border-line transition-all duration-300 ${scrolled ? 'bg-[#0E1015]/80 backdrop-blur-md' : 'bg-[#151821]'}`}>
       <nav className="max-w-6xl mx-auto px-4 flex items-center justify-between h-12">
         {/* Left Logo Tag */}
         <div className="flex items-center shrink-0 select-none">

@@ -1,5 +1,9 @@
+'use client';
+
 import type { Project } from '../types/project';
-export default function ProjectCard({ project }: { project: Project }) {
+import { motion, useReducedMotion } from 'framer-motion';
+
+export default function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   // Generate a mock file path based on project ID
   const ext = project.id === 'proj-1' ? 'ts' : project.id === 'proj-2' ? 'java' : 'py';
   const fileName = project.title.toLowerCase().split(':')[0].replace(/[-_.\s]+/g, '_');
@@ -9,8 +13,16 @@ export default function ProjectCard({ project }: { project: Project }) {
     ? 'text-emerald-400 bg-emerald-500/10 border-emerald-400/40'
     : 'text-amber-300 bg-amber-500/10 border-amber-300/40';
 
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <article className="border border-line bg-[#12151c] rounded-none overflow-hidden transition-colors duration-150 hover:border-white focus-within:outline-2 focus-within:outline-coral focus-within:outline-offset-2 flex flex-col h-full font-mono text-xs select-text">
+    <motion.article
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-10%' }}
+      transition={{ duration: 0.4, delay: prefersReducedMotion ? 0 : index * 0.1, ease: 'easeOut' }}
+      className="border border-line bg-[#12151c] rounded-none overflow-hidden transition-colors duration-150 hover:border-white focus-within:outline-2 focus-within:outline-coral focus-within:outline-offset-2 flex flex-col h-full font-mono text-xs select-text"
+    >
       {/* File Header Tab */}
       <div className="bg-[#181b24] px-4 py-2 border-b border-line flex items-center justify-between text-slate/70 select-none">
         <div className="flex items-center space-x-1.5 min-w-0">
@@ -90,6 +102,6 @@ export default function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

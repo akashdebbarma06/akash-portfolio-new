@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { scrollToSection } from '../lib/utils';
 
 const full =
@@ -7,12 +8,16 @@ const full =
 
 export default function TerminalHero() {
   const [typed, setTyped] = useState('');
+  const [bootComplete, setBootComplete] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      const immediate = setTimeout(() => setTyped(full), 0);
+    if (prefersReducedMotion) {
+      const immediate = setTimeout(() => {
+        setTyped(full);
+        setBootComplete(true);
+      }, 0);
       return () => clearTimeout(immediate);
     }
 
@@ -20,17 +25,26 @@ export default function TerminalHero() {
     const id = setInterval(() => {
       i += 1;
       setTyped(full.slice(0, i));
-      if (i >= full.length) clearInterval(id);
+      if (i >= full.length) {
+        clearInterval(id);
+        setBootComplete(true);
+      }
     }, 15);
     return () => clearInterval(id);
-  }, []);
+  }, [prefersReducedMotion]);
 
-
+  const shouldPin = !prefersReducedMotion && !bootComplete;
 
   return (
-    <section id="home" className="pt-8 pb-4">
+    <section id="home" className={`pt-8 pb-4 ${shouldPin ? 'min-h-[110vh]' : ''}`}>
       {/* Console Window */}
-      <div className="bg-[#12151c] text-[#e2e8f0] border border-line rounded-none shadow-none overflow-hidden font-mono text-xs md:text-sm">
+      <motion.div
+        initial={prefersReducedMotion ? false : { opacity: 0.98, y: 10 }}
+        whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-10%' }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        className={`${shouldPin ? 'sticky top-16' : ''} bg-[#12151c] text-[#e2e8f0] border border-line rounded-none shadow-none overflow-hidden font-mono text-xs md:text-sm`}
+      >
         {/* Terminal Header */}
         <div className="bg-[#181b24] px-4 py-2.5 border-b border-line flex items-center justify-between select-none">
           <div className="flex items-center space-x-2 min-w-0">
@@ -93,7 +107,7 @@ export default function TerminalHero() {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Solid & Ghost Action Buttons below */}
       <div className="mt-6 flex flex-wrap gap-4 select-none">
