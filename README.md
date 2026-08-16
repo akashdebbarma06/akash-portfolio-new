@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Akash Debbarma — Developer Portfolio
 
-## Getting Started
+A personal portfolio designed as an interactive, terminal-inspired code editor. Built to showcase full-stack and AI/ML projects alongside competitive programming achievements.
 
-First, run the development server:
+## 🚀 Quick Start
+
+First, install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```mermaid
+graph TD;
+    Client((Client Browser))
+    
+    subgraph "Next.js Application"
+        UI[React UI Components]
+        Tailwind[Tailwind CSS Styling]
+        Data[(Static JSON Data)]
+    end
+    
+    Client <-->|HTTP Request| UI;
+    UI -->|Uses| Tailwind;
+    UI -->|Reads| Data;
+```
 
-## Learn More
+## ✨ Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Terminal Hero Section**: Features a dynamic, animated typing effect mirroring a real shell interface.
+- **Project Showcase**: File-style project cards with dynamic status tags (Live vs In Progress).
+- **Interactive Navigation**: Hash-based smooth scrolling with an Intersection Observer for active tab highlighting.
+- **Code-Editor Aesthetics**: Obsidian-style dark mode, monospace typography, and sharp, shadowless UI components.
+- **Fully Responsive**: Mobile-first design ensures readability across all devices.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Deployment**: Configured for edge environments
 
-## Deploy on Vercel
+## 📫 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **GitHub**: [akashdebbarma06](https://github.com/akashdebbarma06)
+- **LinkedIn**: [Akash Debbarma](https://www.linkedin.com/in/akashdebbarma06/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
