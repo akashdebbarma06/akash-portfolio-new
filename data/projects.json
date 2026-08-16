@@ -1,0 +1,26 @@
+[
+  {
+    "id": "proj-1",
+    "title": "Real-Time Chat Application",
+    "description": "A real-time communication platform enabling instant messaging between users with low latency.",
+    "stack": ["TypeScript", "WebSockets", "Node.js"],
+    "repo": "https://github.com/akashdebbarma06/Real-Time-Chat-Application",
+    "live": ""
+  },
+  {
+    "id": "proj-2",
+    "title": "Student Management System",
+    "description": "A comprehensive system built in Java for managing student records, tracking enrollment, and handling academic data.",
+    "stack": ["Java", "OOP", "SQL"],
+    "repo": "https://github.com/akashdebbarma06/-Student-Management-System",
+    "live": ""
+  },
+  {
+    "id": "proj-3",
+    "title": "Data Structures & Algorithms (Leetcode)",
+    "description": "A growing collection of optimized solutions to complex algorithmic problems and data structure implementations.",
+    "stack": ["Python", "Algorithms", "Data Structures"],
+    "repo": "https://github.com/akashdebbarma06/Leetcode",
+    "live": ""
+  }
+]
