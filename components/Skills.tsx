@@ -24,7 +24,7 @@ export default function Skills() {
       </h2>
 
       {/* Grid of 3 categories */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {groups.map((g) => (
           <div
             key={g.title}
@@ -52,4 +52,3 @@ export default function Skills() {
     </section>
   );
 }
-

@@ -4,17 +4,18 @@ export default function ProjectCard({ project }: { project: Project }) {
   const ext = project.id === 'proj-1' ? 'ts' : project.id === 'proj-2' ? 'java' : 'py';
   const fileName = project.title.toLowerCase().split(':')[0].replace(/[-_.\s]+/g, '_');
   const filePath = `${fileName}.${ext}`;
-
-  // Check if live or in progress
-  const isLive = project.id !== 'proj-1'; // Mock live for proj-2 & proj-3
+  const isLive = project.status === 'Live';
+  const statusClasses = isLive
+    ? 'text-emerald-400 bg-emerald-500/10 border-emerald-400/40'
+    : 'text-amber-300 bg-amber-500/10 border-amber-300/40';
 
   return (
-    <article className="border border-line bg-[#12151c] rounded-none overflow-hidden transition-all duration-150 hover:border-white hover:-translate-y-0.5 shadow-none hover:shadow-none flex flex-col h-full font-mono text-xs select-text">
+    <article className="border border-line bg-[#12151c] rounded-none overflow-hidden transition-colors duration-150 hover:border-white focus-within:outline-2 focus-within:outline-coral focus-within:outline-offset-2 flex flex-col h-full font-mono text-xs select-text">
       {/* File Header Tab */}
       <div className="bg-[#181b24] px-4 py-2 border-b border-line flex items-center justify-between text-slate/70 select-none">
         <div className="flex items-center space-x-1.5 min-w-0">
           <span className="w-1.5 h-1.5 bg-coral shrink-0 rounded-none" />
-          <span className="truncate text-[11px]">{filePath}</span>
+          <span className="break-all sm:truncate text-[11px]">{filePath}</span>
         </div>
         <div className="flex items-center space-x-1.5 text-slate text-[9px] shrink-0">
           <span>&lt;</span>
@@ -33,16 +34,10 @@ export default function ProjectCard({ project }: { project: Project }) {
 
           {/* Status Badge */}
           <div>
-            {isLive ? (
-              <span className="inline-flex items-center gap-1 text-[9px] font-bold text-redtag bg-redtag/10 border border-redtag/35 px-2 py-0.5 rounded-none uppercase">
-                <span className="w-1 h-1 bg-redtag rounded-none animate-pulse" />
-                <span>Live</span>
-              </span>
-            ) : (
-              <span className="inline-flex items-center gap-1 text-[9px] font-bold text-slate bg-paper/30 border border-line px-2 py-0.5 rounded-none uppercase">
-                <span>In Progress</span>
-              </span>
-            )}
+            <span className={`inline-flex items-center gap-1 text-[9px] font-bold border px-2 py-0.5 rounded-none uppercase ${statusClasses}`}>
+              <span className={`w-1 h-1 rounded-none ${isLive ? 'bg-emerald-400' : 'bg-amber-300'}`} />
+              <span>{project.status}</span>
+            </span>
           </div>
 
           {/* Inner description container */}
@@ -52,13 +47,13 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         {/* Footer actions */}
-        <div className="flex items-center space-x-4 pt-3 border-t border-line/40 select-none">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 pt-3 border-t border-line/40 select-none">
           {project.repo && (
             <a
               href={project.repo}
               target="_blank"
               rel="noreferrer"
-              className="text-slate hover:text-ink inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wide uppercase transition-colors"
+              className="text-slate hover:text-ink inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wide uppercase transition-colors min-h-11 py-1"
             >
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="16 18 22 12 16 6"></polyline>
@@ -67,12 +62,23 @@ export default function ProjectCard({ project }: { project: Project }) {
               <span>GITHUB</span>
             </a>
           )}
+          <a
+            href={`#case-study-${project.id}`}
+            className="text-slate hover:text-ink inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wide uppercase transition-colors focus-visible:outline-2 focus-visible:outline-coral focus-visible:outline-offset-2 min-h-11 py-1"
+          >
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 7h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h10"></path>
+            </svg>
+            <span>CASE STUDY</span>
+          </a>
           {project.live && (
             <a
               href={project.live}
               target="_blank"
               rel="noreferrer"
-              className="text-slate hover:text-ink inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wide uppercase transition-colors"
+              className="text-slate hover:text-ink inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wide uppercase transition-colors min-h-11 py-1"
             >
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -87,5 +93,3 @@ export default function ProjectCard({ project }: { project: Project }) {
     </article>
   );
 }
-
-

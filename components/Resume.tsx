@@ -38,8 +38,8 @@ Vivekananda Shishu Niketan
 
       <div className="border border-line bg-[#12151c] rounded-none overflow-hidden shadow-none flex flex-col">
         {/* Overleaf IDE Header Bar */}
-        <div className="bg-[#181b24] px-4 py-2.5 border-b border-line flex items-center justify-between text-xs font-mono text-slate/75 select-none">
-          <div className="flex items-center space-x-3">
+        <div className="bg-[#181b24] px-4 py-2.5 border-b border-line flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono text-slate/75 select-none">
+          <div className="flex items-center space-x-3 min-w-0">
             <span className="text-redtag font-bold font-sans">Overleaf</span>
             <span className="w-px h-3 bg-line" />
             <span className="truncate">main.tex</span>
@@ -47,7 +47,7 @@ Vivekananda Shishu Niketan
 
           <button
             onClick={() => alert('Resume PDF link/download is currently a placeholder and will be linked dynamically.')}
-            className="bg-coral hover:bg-coral/95 text-paper px-3 py-1 rounded-none text-[11px] font-mono font-bold flex items-center gap-1.5 cursor-pointer transition-colors shadow-none"
+            className="bg-coral hover:bg-coral/95 text-paper px-3 py-1 rounded-none text-[11px] font-mono font-bold flex items-center gap-1.5 cursor-pointer transition-colors shadow-none min-h-11"
           >
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -91,7 +91,7 @@ Vivekananda Shishu Niketan
                 <div>
                   <h4 className="font-bold text-ink uppercase tracking-wide border-b border-line/30 pb-0.5 mb-1.5 font-sans">Education</h4>
                   
-                  <div className="flex justify-between font-sans">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-0.5 font-sans">
                     <span className="font-semibold text-ink">B.Tech in Computer Engineering</span>
                     <span className="text-slate italic">Aug 2024 – Aug 2028</span>
                   </div>
@@ -99,7 +99,7 @@ Vivekananda Shishu Niketan
                     Techno College of Engineering Agartala
                   </div>
 
-                  <div className="flex justify-between font-sans">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-0.5 font-sans">
                     <span className="font-semibold text-ink">Higher Secondary, Science Stream</span>
                     <span className="text-slate italic">May 2024</span>
                   </div>
@@ -134,7 +134,7 @@ Vivekananda Shishu Niketan
             <div className="mt-6 pt-4 border-t border-line/45 text-center font-sans">
               <button
                 onClick={() => alert('Resume PDF link/download is currently a placeholder and will be linked dynamically.')}
-                className="text-coral font-bold hover:underline inline-flex items-center gap-1 text-xs cursor-pointer"
+                className="text-coral font-bold hover:underline inline-flex items-center gap-1 text-xs cursor-pointer min-h-11"
               >
                 <span>Download full resume PDF</span>
                 <span aria-hidden>→</span>

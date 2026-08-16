@@ -53,9 +53,9 @@ export default function Contact() {
                   href={item.href}
                   target={item.key !== 'email' ? '_blank' : undefined}
                   rel={item.key !== 'email' ? 'noreferrer' : undefined}
-                  className="text-ink hover:underline ml-1.5 truncate max-w-[250px] sm:max-w-md font-sans text-xs"
+                  className="text-ink hover:underline ml-1.5 max-w-[250px] sm:max-w-md font-sans text-xs break-all min-h-11 inline-flex items-center"
                 >
-                  "{item.value}"
+                  &quot;{item.value}&quot;
                 </a>
 
                 {/* Utility Buttons */}
@@ -63,7 +63,7 @@ export default function Contact() {
                   {/* Copy Button */}
                   <button
                     onClick={() => copyToClipboard(item.value, item.key)}
-                    className="p-1 rounded-none hover:bg-paper border border-transparent hover:border-line/45 text-slate hover:text-ink cursor-pointer focus:outline-none"
+                    className="p-1 min-h-11 min-w-11 rounded-none hover:bg-paper border border-transparent hover:border-line/45 text-slate hover:text-ink cursor-pointer focus-visible:outline-2 focus-visible:outline-coral focus-visible:outline-offset-2"
                     title="Copy value"
                   >
                     {copiedKey === item.key ? (

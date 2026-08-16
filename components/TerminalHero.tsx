@@ -2,15 +2,18 @@
 import { useEffect, useState } from 'react';
 import { scrollToSection } from '../lib/utils';
 
+const full =
+  'B.Tech Computer Engineering student building toward a career in AI Engineering. Focused on Python, machine learning, and turning models into useful applications. Open to AI/ML internships.';
+
 export default function TerminalHero() {
   const [typed, setTyped] = useState('');
-  const full = 'B.Tech Computer Engineering student building toward a career in AI Engineering. Focused on Python, machine learning, and turning models into useful applications. Open to AI/ML internships.';
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) {
-      setTyped(full);
-      return;
+      const immediate = setTimeout(() => setTyped(full), 0);
+      return () => clearTimeout(immediate);
     }
 
     let i = 0;
@@ -30,9 +33,9 @@ export default function TerminalHero() {
       <div className="bg-[#12151c] text-[#e2e8f0] border border-line rounded-none shadow-none overflow-hidden font-mono text-xs md:text-sm">
         {/* Terminal Header */}
         <div className="bg-[#181b24] px-4 py-2.5 border-b border-line flex items-center justify-between select-none">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 min-w-0">
             <span className="w-2.5 h-2.5 bg-coral shrink-0 rounded-none" />
-            <span className="text-[11px] text-slate font-medium">~/akash/intro.sh Bash</span>
+            <span className="text-[11px] text-slate font-medium truncate">~/akash/intro.sh Bash</span>
           </div>
 
           <div className="flex items-center space-x-4">
@@ -63,7 +66,7 @@ export default function TerminalHero() {
         </div>
 
         {/* Terminal Content Box */}
-        <div className="p-8 md:p-10 space-y-5">
+        <div className="p-5 sm:p-6 md:p-10 space-y-5">
           {/* Status Tag */}
           <div className="inline-block text-[10px] font-bold text-emerald-400 tracking-wider border border-emerald-400/40 bg-emerald-400/5 px-2 py-0.5 rounded-none select-none">
             [ STATUS: ONLINE ]
@@ -71,18 +74,23 @@ export default function TerminalHero() {
 
           {/* Heading Name */}
           <div className="space-y-1.5">
-            <h1 className="text-xl md:text-2xl font-bold text-coral tracking-wide font-sans">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-coral tracking-wide font-sans break-words">
               Akash Debbarma
             </h1>
-            <h2 className="text-sm md:text-base font-bold text-ink">
+            <h2 className="text-sm sm:text-base md:text-lg font-bold text-ink break-words">
               | Aspiring AI Engineer | Python &amp; ML
             </h2>
           </div>
 
           {/* Code description block */}
-          <div className="border border-line bg-paper/30 p-5 rounded-none leading-relaxed text-slate select-text">
+          <div className="border border-line bg-paper/30 p-4 sm:p-5 rounded-none leading-relaxed text-slate select-text break-words">
             <span>&gt; {typed}</span>
-            <span className="text-coral ml-0.5 animate-cursor-blink font-bold select-none">_</span>
+            <span
+              aria-hidden
+              className="text-coral ml-0.5 animate-cursor-blink motion-reduce:animate-none font-bold select-none"
+            >
+              _
+            </span>
           </div>
         </div>
       </div>
@@ -91,14 +99,14 @@ export default function TerminalHero() {
       <div className="mt-6 flex flex-wrap gap-4 select-none">
         <button
           onClick={() => scrollToSection('projects')}
-          className="bg-ink hover:bg-ink/80 text-paper px-5 py-2 rounded-none text-xs font-mono font-bold tracking-wide transition-all duration-150 cursor-pointer inline-flex items-center gap-1.5"
+          className="bg-ink hover:bg-ink/80 text-paper px-5 py-2 rounded-none text-xs font-mono font-bold tracking-wide transition-all duration-150 cursor-pointer inline-flex items-center gap-1.5 min-h-11"
         >
           <span>VIEW PROJECTS</span>
           <span>→</span>
         </button>
         <button
           onClick={() => scrollToSection('resume')}
-          className="border border-line hover:border-coral hover:text-coral px-5 py-2 rounded-none text-xs font-mono font-bold tracking-wide text-ink cursor-pointer transition-all duration-150 inline-flex items-center gap-1.5"
+          className="border border-line hover:border-coral hover:text-coral px-5 py-2 rounded-none text-xs font-mono font-bold tracking-wide text-ink cursor-pointer transition-all duration-150 inline-flex items-center gap-1.5 min-h-11"
         >
           <span>DOWNLOAD RESUME</span>
           <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

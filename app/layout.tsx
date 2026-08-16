@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -11,13 +11,19 @@ const inter = Inter({
 const ibm = IBM_Plex_Mono({
   variable: "--font-ibm",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   display: 'swap',
 });
 
 export const metadata: Metadata = {
   title: "Akash — Portfolio",
   description: "Akash Debbarma — full-stack & AI/ML projects, competitive programming",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

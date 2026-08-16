@@ -30,6 +30,23 @@
   animation: cursorBlink 1.1s step-end infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-cursor-blink {
+    animation: none !important;
+  }
+}
+
 
 body {
   background: var(--background);
@@ -56,5 +73,4 @@ a:hover {
   outline: 2px solid var(--color-coral-val);
   outline-offset: 2px;
 }
-
 
