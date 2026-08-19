@@ -45,8 +45,9 @@ Vivekananda Shishu Niketan
             <span className="truncate">main.tex</span>
           </div>
 
-          <button
-            onClick={() => alert('Resume PDF link/download is currently a placeholder and will be linked dynamically.')}
+          <a
+            href="/Resume.pdf"
+            download="Akash_Debbarma_Resume.pdf"
             className="bg-coral hover:bg-coral/95 text-paper px-3 py-1 rounded-none text-[11px] font-mono font-bold flex items-center gap-1.5 cursor-pointer transition-colors shadow-none min-h-11"
           >
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -55,7 +56,7 @@ Vivekananda Shishu Niketan
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
             <span>RECOMPILE / DOWNLOAD</span>
-          </button>
+          </a>
         </div>
 
         {/* Split Screen Container */}
@@ -132,13 +133,14 @@ Vivekananda Shishu Niketan
             </div>
 
             <div className="mt-6 pt-4 border-t border-line/45 text-center font-sans">
-              <button
-                onClick={() => alert('Resume PDF link/download is currently a placeholder and will be linked dynamically.')}
+              <a
+                href="/Resume.pdf"
+                download="Akash_Debbarma_Resume.pdf"
                 className="text-coral font-bold hover:underline inline-flex items-center gap-1 text-xs cursor-pointer min-h-11"
               >
                 <span>Download full resume PDF</span>
                 <span aria-hidden>→</span>
-              </button>
+              </a>
             </div>
 
           </div>

@@ -23,17 +23,17 @@ export default function Contact() {
     <section id="contact" className="mt-2 mb-12 scroll-mt-14">
       <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-ink font-mono select-none">
         <span className="text-coral font-bold">#</span>
-        <span>contact.yaml</span>
+        <span>contact.HTML</span>
       </h2>
 
       <div className="border border-line bg-[#12151c] rounded-none overflow-hidden shadow-none font-mono text-xs md:text-sm">
-        {/* YAML File Header */}
+        {/* HTML File Header */}
         <div className="bg-[#181b24] px-4 py-2 border-b border-line flex items-center justify-between text-slate/70 select-none">
-          <span>workspace/contact.yaml</span>
-          <span className="text-[10px]">yaml • 10 lines</span>
+          <span>workspace/contact.HTML</span>
+          <span className="text-[10px]">HTML • 10 lines</span>
         </div>
 
-        {/* YAML Content Panel */}
+        {/* HTML Content Panel */}
         <div className="p-6 md:p-8 space-y-4 select-text">
           <div className="text-slate/40 italic mb-2">
             # Feel free to copy these fields or open links directly.
@@ -47,12 +47,12 @@ export default function Contact() {
             {contactData.map((item) => (
               <div key={item.key} className="flex flex-wrap items-center group">
                 <span className="text-coral font-semibold mr-1.5">{item.key}</span>:
-                
+
                 {/* Clickable Value */}
                 <a
                   href={item.href}
-                  target={item.key !== 'email' ? '_blank' : undefined}
-                  rel={item.key !== 'email' ? 'noreferrer' : undefined}
+                  target={item.key !== 'email' && item.key !== 'phone' ? '_blank' : undefined}
+                  rel={item.key !== 'email' && item.key !== 'phone' ? 'noopener noreferrer' : undefined}
                   className="text-ink hover:underline ml-1.5 max-w-[250px] sm:max-w-md font-sans text-xs break-all min-h-11 inline-flex items-center"
                 >
                   &quot;{item.value}&quot;

@@ -87,7 +87,7 @@ flowchart LR
     SecProj[Projects Section]
     SecSkill[Skills Section]
     SecRes[Resume Section]
-    SecCont[Contact YAML]
+    SecCont[Contact HTML]
     
     Home --> Nav
     Nav -- "#home" --> SecHero
@@ -114,7 +114,7 @@ flowchart LR
 | **IDE Aesthetics** | Strict Obsidian-style dark mode, monospace typography, and sharp edges. | 🟢 Active |
 | **Dynamic Cards** | Project showcase featuring mock IDE file-tabs (e.g., `.ts`, `.py`). | 🟢 Active |
 | **Resume Preview** | LaTeX-editor inspired split-screen view for the live resume. | 🟢 Active |
-| **Interactive YAML** | Contact section formatted as a clickable, copyable `contact.yaml` file. | 🟢 Active |
+| **Interactive HTML** | Contact section formatted as a clickable, copyable `contact.HTML` file. | 🟢 Active |
 
 ---
 
